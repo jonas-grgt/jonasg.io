@@ -1,0 +1,21 @@
+languageCode = "en"
+languageName = "English"
+weight = 1
+
+title = "jonasg.io "
+
+[params]
+  isoCode = "en"
+  displayName = "EN"
+  rtl = false
+  dateFormat = "2 January 2006"
+
+[author]
+   name = "Jonas Geiregat"
+   image = "img/author.png"
+   headline = "Software Developer"
+   links = [
+     { github = "https://github.com/jonasgeiregat" },
+     { linkedin = "https://www.linkedin.com/in/jonas-geiregat-a8421a31" },
+     { twitter = "https://twitter.com/jonas_grgt" },
+   ]
