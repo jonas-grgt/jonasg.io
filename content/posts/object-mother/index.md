@@ -179,7 +179,6 @@ public class InvoiceMother {
 }
 ```
 
-
 It's important to note that the concept discussed here is not about the suffix 'Mother.'
 If you find the suffix unfavorable, feel free to use any other suffix that better suits your needs, such as
 _InvoiceTestDataFactory,_ _InvoiceFixture,_ _InvoiceTestData,_ and so on.
@@ -195,6 +194,45 @@ What can flex:
 - Let the defaults for custom complex objects depend on other Mothers
 - The Mother suffix
 - Making the Builder part of your Mother class
+
+But what if your test requires a specific field in one of the nested custom objects to be in a particular state? 
+For instance, you may need the shipping address's country to be set as 'US,' while the other field values are irrelevant
+for your test. 
+With the current setup, you would have to pass in another mother object and build it fully changing only that field that 
+matter for your test.
+
+```java
+InvoiceMother.invoice()
+    .withShippingAddress(AddressMother.addres()
+        .withCountry(Country.US)
+        .build())
+    .build();
+```
+
+Although this approach works, we can further improve it by utilizing a `java.util.function.Consumer` with 
+the `AddressMother.Builder`:
+
+```java
+InvoiceMother.invoice()
+        .withShippingAddress(a -> a.withCountry(Country.US))
+        .build();
+```
+
+In this case, the builder method would look like this:
+
+```java
+public Builder withShippingAddress(Consumer<AddressMother.Builder> addressConsumer) {
+    Address.Builder builder = AddressMother.address();
+    addressConsumer.accept(builder)
+    this.shippingAddress = builder.build();    
+    return this;
+}
+```
+
+These enhancements aim to improve the readability and clarity of the code example while retaining the original meaning 
+and intent.
+
+# Takeaways
 
 In conclusion, the Object Mother concept offers developers a powerful approach to effortlessly generate intricate 
 test objects. By combining the concept with pre-filled builders, developers can effectively simplify the technical 
