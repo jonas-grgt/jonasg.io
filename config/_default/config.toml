@@ -10,5 +10,7 @@ summaryLength = 0
 
 googleAnalytics = "G-ZPY1Q2T661"
 
+disqusShortname = 'jonasg-io'
+
 [outputs]
   home = ["HTML", "RSS", "JSON"]
