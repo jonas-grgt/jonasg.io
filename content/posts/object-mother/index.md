@@ -86,7 +86,7 @@ While this approach may initially appear to solve the creational issue, it tends
 As [Martin Fowler](https://martinfowler.com/bliki/ObjectMother.html) highlights:
 > Object Mothers do have their faults. In particular there's a heavy coupling in that many tests will depend on the exact data in the mothers.
 
-I've observed several implemented solutions used to address this issue, including;
+I've observed several solutions to address this issue, including;
 - creating specific static factory methods
 - adding parameters to differentiate the creational logic.
 
@@ -99,10 +99,10 @@ InvoiceTestDataFactory.invoice(
         new InvoiceItem("Product B", Amount.EUR(100.00), Tax.vatPercentage(21)));
 ```
 
-While solutions like the ones above at first glance appear to solve the coupling issue it actually makes it worse while
-at the same time introducing a whole other set of challenges.
+While these solutions may initially appear to solve the coupling issue, they often result in tight coupling between 
+specific factory methods and the requirements of individual tests, limiting their reusability.
 
-One introduces different factory methods or several sets of parameters because there are tests that require different 
+One introduces _different_ factory methods or several sets of parameters because there are tests that require _different_ 
 _permutations_ of the same objects under test.
 
 Imagine you have an object with 5 primitive fields and 5 custom-typed fields. The question arises: how many permutations
@@ -185,9 +185,10 @@ _InvoiceTestDataFactory,_ _InvoiceFixture,_ _InvoiceTestData,_ and so on.
 
 What is important:
 
-- **Limit** your **static factory methods** to the absolute minimum
-- Rather **override a field using the Builder** than to introduce a new static factory method
-- Work on a **pre-filled Builder**
+- Let your factory methods return *Builders* not the object under creation.
+- **Limit** your **static factory methods** to the absolute minimum.
+- Rather **override a field using the Builder** than to introduce a new static factory method.
+- Use a **pre-filled Builder**
 
 What can flex:
 
@@ -214,7 +215,7 @@ the `AddressMother.Builder`:
 
 ```java
 InvoiceMother.invoice()
-        .withShippingAddress(a -> a.withCountry(Country.US))
+        .withShippingAddress(b -> b.withCountry(Country.US))
         .build();
 ```
 
