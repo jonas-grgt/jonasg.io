@@ -23,7 +23,7 @@ Initially the creational logic is simple, as the objects may have fewer fields o
 However, inevitably over time, the set of objects grows as their intricacy, they become more complex and 
 time-consuming to construct.
 
-Various solutions exist to address this underlying issue, such as _Test Data Factories_, _Data Fakers_, 
+Various solutions exist to address those issues, such as _Test Data Factories_, _Data Fakers_, 
 _Test Data Generators_ or _Fixture Builders_ etc ..
 In the end they all share a common goal: **simplifying** object creation while ensuring **reusability**. 
 Martin Fowler has even coined a term for this concept, known as 
