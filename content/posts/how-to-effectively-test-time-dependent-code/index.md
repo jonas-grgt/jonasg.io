@@ -104,7 +104,7 @@ public class OrderTest {
 Notice how in the assertion the day has moved on by one hour and one day, because the date-time is generated in a +1 time zone.
 ### Alternative solutions
 #### Truncating time for more precision
-There are alternative solutions available for accurately testing date-time generation if you *prefer not to rely* on `java.time.Clock`. However, it's important to note that relying solely on the system's default clock carries its own risks.
+There are alternative solutions available for testing date-time generation if you *prefer not to rely* on `java.time.Clock`. However, it's important to note that relying solely on the system's default clock carries its own risks.
 
 The problem with asserting the generated date-time is that even a small amount of time between generating the date-time and asserting it can lead to faulty assertions. Consequently, this test example without the clock will likely be unreliable:
 ```java
