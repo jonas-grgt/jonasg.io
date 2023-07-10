@@ -85,23 +85,17 @@ public Order markAsProcessed(Clock clock) {
 ```
 Which would result in the following test:
 ```java
-public class OrderTest {
+// given
+var order = OrderMother.newOrder(); 
 
-	@Test
-	void 
-		// given
-		var order = OrderMother.newOrder(); 
+// when
+var clock = Clock.fixed(Instant.parse("1985-02-25T23:00:00.00Z"), 
+        ZoneId.of("Europe/Brussels");
+order.markAsProcessed(clock);
 
-		// when
-        var clock = Clock.fixed(Instant.parse("1985-02-25T23:00:00.00Z"), 
-                ZoneId.of("Europe/Brussels");
-		order.markAsProcessed(clock);
-
-		// then
-		assertThat(order.processDateTime())
-          .isEqualTo(LocalDateTime.parse("1985-02-26T00:00:00"));
-	}
-}
+// then
+assertThat(order.processDateTime())
+  .isEqualTo(LocalDateTime.parse("1985-02-26T00:00:00"));
 ```
 Notice how in the assertion the day has moved on by one hour and one day, because the date-time is generated in a +1 time zone.
 ### Alternative solutions
@@ -110,21 +104,15 @@ There are alternative solutions available for testing date-time generation if yo
 
 The problem with asserting the generated date-time is that even a small amount of time between generating the date-time and asserting it can lead to faulty assertions. Consequently, this test example without the clock will likely be unreliable:
 ```java
-public class OrderTest {
+// given
+var order = OrderMother.newOrder(); 
 
-	@Test
-	void 
-		// given
-		var order = OrderMother.newOrder(); 
+// when
+order.markAsProcessed();
 
-		// when
-		order.markAsProcessed();
-
-		// then
-		assertThat(order.processDateTime())
-			.isEqualTo(LocalDateTime.now());
-	}
-}
+// then
+assertThat(order.processDateTime())
+    .isEqualTo(LocalDateTime.now());
 ```
 This test is prone to flakiness and will probably fail consistently due to the time that elapses between the `markAsProcessed` method's `LocalDateTime.now()` call and the actual assertion. To mitigate this, you can truncate the generated date-time to seconds or milliseconds and perform the same truncation in the assertion. While this approach reduces flakiness, it doesn't guarantee 100% accuracy. But in most cases that trade-off is acceptable.
 Here's an example of truncating to seconds in your production code:
@@ -133,22 +121,15 @@ Instant.now().truncatedTo(ChronoUnit.SECONDS)
 ```
 And this can be tested like so:
 ```java
-public class OrderTest {
+// given
+var order = OrderMother.newOrder(); 
 
-	@Test
-	void 
-		// given
-		var order = OrderMother.newOrder(); 
+// when
+order.markAsProcessed();
 
-		// when
-		order.markAsProcessed();
-
-		// then
-		assertThat(order.processDateTime())
-			.isEqualTo(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
-	}
-}
-
+// then
+assertThat(order.processDateTime())
+    .isEqualTo(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 ```
 Wondering what this `OrderMother` is, check out my previous article on [mothers](https://jonasg.io/posts/object-mother)
 #### Assert generated time is close enough to now
