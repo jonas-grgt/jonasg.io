@@ -15,6 +15,7 @@ cascade:
 Explore strategies for reliable testing of time-dependent code, including techniques to mitigate flakiness in tests and enable precise time manipulation within your test suites.
 <!--more-->
 
+---
 By default, Java relies on the system clock to determine the current date and time. While in most cases this approach works fine when our system clock remains unchanged, it can quickly turn into a nightmare upon a simple faulty configuration change outside of your control.
 
 I have first-hand witnessed the consequences of an innocent OS upgrade silently altering the default time zone of a system. The impact was nothing short of disastrous, as all timestamps generated and stored by the application were suddenly off by a couple of hours.
