@@ -27,7 +27,8 @@ The culprit of having our code depend on the system clock is the use of static `
 - `ZonedDateTime.now()`
 - `OffsetDateTime.now()`
 - `Instant.now()`
-  Examining the implementation of the `ZonedDateTime.now()` method in the JDK, we can see it delegates to another `now` method that takes a `java.time.Clock` instance as a parameter.
+
+Examining the implementation of the `ZonedDateTime.now()` method in the JDK, we can see it delegates to another `now` method that takes a `java.time.Clock` instance as a parameter.
 ```java
 public final class ZonedDateTime
         implements Temporal, ChronoZonedDateTime<LocalDate>, Serializable {
