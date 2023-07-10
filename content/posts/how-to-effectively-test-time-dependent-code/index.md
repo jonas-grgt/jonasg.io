@@ -16,6 +16,7 @@ Explore strategies for reliable testing of time-dependent code, including techni
 <!--more-->
 
 By default, Java relies on the system clock to determine the current date and time. While in most cases this approach works fine when our system clock remains unchanged, it can quickly turn into a nightmare upon a simple faulty configuration change outside of your control.
+
 I have first-hand witnessed the consequences of an innocent OS upgrade silently altering the default time zone of a system. The impact was nothing short of disastrous, as all timestamps generated and stored by the application were suddenly off by a couple of hours.
 This post delves into the root cause of the issue, and as we will see, it presents a simple solution that at the same time enables us to write more robust tests and gain better control over the time-related aspects of our Java applications.
 ## The time is now
