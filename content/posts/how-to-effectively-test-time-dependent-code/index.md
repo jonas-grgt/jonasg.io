@@ -20,7 +20,7 @@ By default, Java relies on the system clock to determine the current date and ti
 
 I have first-hand witnessed the consequences of an innocent OS upgrade silently altering the default time zone of a system. The impact was nothing short of disastrous, as all timestamps generated and stored by the application were suddenly off by a couple of hours.
 This post delves into the root cause of the issue, and as we will see, it presents a simple solution that at the same time enables us to write more robust tests and gain better control over the time-related aspects of our Java applications.
-## The time is now
+# The time is now
 The culprit of having our code depend on the system clock is the use of static `java.time...now()` methods such as:
 - `LocalDate.now()`
 - `LocalDateTime.now()`
@@ -54,13 +54,13 @@ Think of `java.time.Clock` as a physical wall clock that can be easily replaced 
 >
 > [Java documentation](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/ZonedDateTime.html#now(java.time.Clock))
 
-### Controlling the correct time zone
+# Controlling the correct time zone
 Passing a clock bound to a specific time zone frees us from relying solely on the system's clock for date-time generation.
 ```java
 ZonedDateTime.now(Clock.system(ZoneId.of("Europe/Brussels")))
 ```
 By introducing a clock dependency, our production code becomes an area where accessing `java.time.Clock` is necessary. The same requirement extends to our tests, offering us significant benefits. In the next section, we will focus on the tests first and then proceed to examine our production code.
-### Fixating the clock
+## Fixating the clock
 Having fine-grained control over date-time generation in our tests is indispensable for avoiding flaky tests. Java helps by allowing us to *fixate* the clock on a certain date-time within a specific time zone:
 ```java
 Clock.fixed(Instant.parse("1985-02-25T23:00:00.00Z"), 
@@ -99,8 +99,8 @@ assertThat(order.processDateTime())
   .isEqualTo(LocalDateTime.parse("1985-02-26T00:00:00"));
 ```
 Notice how in the assertion the day has moved on by one hour and one day, because the date-time is generated in a +1 time zone.
-### Alternative solutions
-#### Truncating time for more precision
+# Alternative solutions
+## Truncating time for more precision
 There are alternative solutions available for testing date-time generation if you *prefer not to rely* on `java.time.Clock`. However, it's important to note that relying solely on the system's default clock carries its own risks.
 
 The problem with asserting the generated date-time is that even a small amount of time between generating the date-time and asserting it can lead to faulty assertions. Consequently, this test example without the clock will likely be unreliable:
@@ -133,7 +133,7 @@ assertThat(order.processDateTime())
     .isEqualTo(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 ```
 Wondering what this `OrderMother` is, check out my previous article on [mothers](https://jonasg.io/posts/object-mother)
-#### Assert generated time is close enough to now
+## Assert that the generated time is close enough to now
 A second alternative is to utilize [AssertJ](https://joel-costigliola.github.io/assertj)'s `.closeTo` assertion methods, which provides a convenient way to assert values within a specified range. Here are a couple of examples to illustrate this:
 ```java
 var localDateTime = LocalDateTime.now(Clock.systemUTC()); 
@@ -144,7 +144,7 @@ var instant = Instant.parse("2000-01-01T00:00:00.00Z")
 assertThat(instant)
 	.isCloseTo("1999-12-31T23:59:59.99Z", within(10, ChronoUnit.MILLIS))
 ```
-### Clock as a spring bean
+# Clock as a spring bean
 Going forward with the clock. Whenever we require access to the current date-time, it is necessary to have access to the clock. However, passing the clock object throughout our code can become cumbersome. 
 Fortunately, most modern applications make use of an IoC (Inversion of Control) Container, which alleviates this burden. As a result, we will expose the Clock as an object eligible for inversion of control or, in Spring terminology, convert it into a bean.
 ```java
@@ -198,7 +198,7 @@ Now we can assert the order to be marked as processed at the fixed date-time.
 What if we require precise control over the clock at a per-test level within a single Spring context, without the need to create a new context for each case where a different clock is desired?
 Or maybe we want to play with our current date-time and actually move time forward or maybe even rewind it? 
 The next section will cover these use-cases.
-### Mutable clock
+# Mutable clock
 The default `java.time.Clock` implementation is immutable in the sense that you can not change it's current date-time or timezone.
 By incorporating a mutable clock that can manipulate time or be set to a specific date-time within our tests, we can avoid the need for multiple Spring contexts.
 ```java
