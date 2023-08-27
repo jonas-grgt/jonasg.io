@@ -1,5 +1,5 @@
 ---
-title: "The subtle Art of Test Method Naming" 
+title: "The subtle Art of Java Test Method Naming" 
 description: "Exploring the Depth of Test Method Naming: Beyond Conventions to Enhance Clarity."
 date: 2023-08-27
 tags:
