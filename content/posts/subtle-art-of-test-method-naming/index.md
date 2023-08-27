@@ -12,7 +12,7 @@ cascade:
   invertPagination: true
 ---
 
-Regrettably, tests must be encapsulated within methods that demand a name, and as with all aspects of programming, naming often proves to be the most challenging task.
+Tests must be encapsulated within methods that demand a name, and as with all aspects of programming, naming often proves to be the most challenging task.
 <!--more-->
 ---
 In navigating the software landscape, I've encountered varied approaches to naming test methods. Some teams grant developers the freedom to name tests as they see fit. However, this often leads to a mix of clear, cryptic, misleading, or ambiguous test method names.
