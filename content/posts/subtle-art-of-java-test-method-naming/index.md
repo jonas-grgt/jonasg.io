@@ -134,15 +134,15 @@ class InvoiceTest {
 ```
 
 ```java
-class OustandingInvoiceFeatureTest {
+class InvoiceTest {
 	@Nested
 	class ShouldIncur10PercentFee {
 	
 		@Test
 		void whenPaymentExceeds30DaysLimit() {
-	
-		@Test
-		void whenWithin30DaysLimit_Then_NoFreeIsIncurred() {
+            
+        @Test
+        void whenPaymentIsDoneByCreditCard() {
 ```
 
 However, this approach challenges common conventions, as most conventions primarily focus on method names.
