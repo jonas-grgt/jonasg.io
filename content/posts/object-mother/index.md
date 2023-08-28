@@ -16,7 +16,7 @@ Discover how the Object Mother concept empowers developers to effortlessly gener
 enhancing code readability, maintainability, and overall testing efficiency.
 <!--more-->
 
-# The creational problem
+## The creational problem
 A good structured test exists out of three parts commonly known as: Given When Then or Arrange Act Assert.
 
 Within the _Given_ part you declare a set of objects that will drive your test. 
@@ -73,7 +73,7 @@ In the case of the aforementioned test, an Invoice object is needed, which, in t
 However, it is noteworthy that, for this specific test, only the invoice items hold significance. They play a vital role
 in asserting and calculating the VAT amount.
 
-# Test Data - Factory, Generator, Builder, Fixtures ...
+## Test Data - Factory, Generator, Builder, Fixtures ...
 
 There are numerous patterns available to create the required objects for your tests.
 A very common approach to simplify the creational logic while at the same time having some kind of of code reuse in place 
@@ -114,7 +114,7 @@ and confusing to use.
 
 So, how can we **simplify the technical creational logic while simultaneously highlighting its essential aspects**?
 
-# Emphasize what matters and hide the irrelevant parts 
+## Emphasize what matters and hide the irrelevant parts 
 
 By combining the Object Mother concept with _pre-filled_ builders it becomes possible to hide away all unnecessary 
 complexity while at the same time **emphasizing what matters** for your test-case.
@@ -234,7 +234,7 @@ public Builder withShippingAddress(Consumer<AddressMother.Builder> addressConsum
 These enhancements aim to improve the readability and clarity of the code example while retaining the original meaning 
 and intent.
 
-# Takeaways
+## Takeaways
 
 In conclusion, the Object Mother concept offers developers a powerful approach to effortlessly generate intricate 
 test objects. By combining the concept with pre-filled builders, developers can effectively simplify the technical 
