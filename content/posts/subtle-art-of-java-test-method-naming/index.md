@@ -20,7 +20,7 @@ In navigating the software landscape, I've encountered varied approaches to nami
 Conversely, certain teams enforce test method naming conventions to address these issues. Nevertheless, conventions can feel rigid, clumsy, and unfitting, sometimes resulting in problems similar to having no convention at all.
 
 This article embarks on a journey to devise a practical strategy for defining test method names and their structure, all rooted in their inherent value. So, what truly defines the value of a test method name?
-## The documentation value
+## Executable pieces of documentation
 Tests offer an invaluable yet often underestimated asset: their inherent documentation capabilities. As you write tests, you define the boundaries of your business logic or explore the capabilities of your infrastructural code, often without recognizing that you're undertaking an additional vital task — **documenting the capabilities of your system**.
 
 The documentation value tests have goes beyond the static nature of traditional documentation found in sources like company wikis. **Tests are living pieces of documentation**, continuously evolving due to their executable nature. No feature or requirements should be left untested, hence it is documented. And when a test fails, often signalling regression or a change in the required behavior, you are prompted to correct it, ensuring both the accuracy of your system and the correctness of your documentation.
