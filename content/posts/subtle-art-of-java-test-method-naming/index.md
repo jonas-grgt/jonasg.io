@@ -57,10 +57,12 @@ When writing a test, even when we are considering the behavior, we often transit
 
 👎 Examples of subpar test names that give examples of describing behavior:
 ```java
+void shouldConsider_abc_asATooShortPassword()
 void testExpireInvoiceOnAugust15th() {
 void testReportJobStartsAt8AM() {
 void testCalculateMinus10PercentVatRate() {
 ```
+- It does not describe the general rule which makes a password too short
 - A specific date limits the understanding of the tested behavior to this exact date, lacking generality.
 - Focuses on a particular time, limiting the overal comprehension of when the job should start.
 - Mentions a precise VAT rate, which might not be clear in conveying the overall behavior.
