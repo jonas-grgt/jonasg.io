@@ -1,3 +1,3 @@
-Ever since my teenage years, I've been captivated by the world of Linux and Open Source. 
-<br/>This early interest has shaped my career path, focusing primarily on creating Software using the Java ecosystem. 
-<br/>Today I focus on creating evolutionary software through the means of extreme programming.
+👨‍💻 I'm Jonas, a passionate Software Developer with a keen focus on crafting robust <b>Event Driven Architectures</b> in ☕️ <b>Java</b>. I thrive at the crossroads of business and technology, always keeping a pragmatic perspective on both realms.<br/><br/>
+👉 My approach is rooted in a combination of proven methodologies, including <b>Extreme Programming (XP), Test-Driven Development (TDD), and Domain-Driven Design (DDD)</b>. I believe that these principles pave the way for scalable, efficient, and maintainable software solutions.<br/><br/>
+✨ Join me on this journey where code meets creativity, and let's shape the future of technology together.
