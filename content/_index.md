@@ -1,3 +1,2 @@
-👨‍💻 I'm Jonas, a passionate Software Developer with a keen focus on crafting robust <b>Event Driven Architectures</b> in ☕️ <b>Java</b>. I thrive at the crossroads of business and technology, always keeping a pragmatic perspective on both realms.<br/><br/>
+👨‍💻 I'm Jonas, a Software Developer with a keen focus on crafting robust Software Architectures in ☕️ <b>Java</b>. I thrive at the crossroads of business and technology, always keeping a pragmatic perspective on both realms.<br/><br/>
 👉 My approach is rooted in a combination of proven methodologies, including <b>Extreme Programming (XP), Test-Driven Development (TDD), and Domain-Driven Design (DDD)</b>. I believe that these principles pave the way for scalable, efficient, and maintainable software solutions.<br/><br/>
-✨ Join me on this journey where code meets creativity, and let's shape the future of technology together.
