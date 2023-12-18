@@ -26,7 +26,7 @@ time-consuming to construct.
 
 Various solutions exist to address those issues, such as _Test Data Factories_, _Data Fakers_, 
 _Test Data Generators_ or _Fixture Builders_ etc ..
-In the end they all share a common goal: **simplifying** object creation while ensuring **reusability**. 
+In the end they all share a common goal: <b style="color: #3da6b1;">simplifying</b> object creation while ensuring <b style="color: #3da6b1;">reusability</b>. 
 Martin Fowler has even coined a term for this concept, known as 
 [Object Mother](https://martinfowler.com/bliki/ObjectMother.html).
 
@@ -70,8 +70,8 @@ assertThat(amount).isEqualTo(Amount.EUR(42))
 ```
 
 In the case of the aforementioned test, an Invoice object is needed, which, in turn, depends on several other objects. 
-However, it is noteworthy that, for this specific test, **only the invoice items hold significance**. They play a vital role
-in asserting and calculating the VAT amount, all the other objects and fields just **clutter the readability of the test**.
+However, it is noteworthy that, for this specific test, <b style="color: #3da6b1;">only the invoice items hold significance</b>. They play a vital role
+in asserting and calculating the VAT amount, all the other objects and fields just <b style="color: #3da6b1;">clutter the readability of the test</b>.
 
 ## Test Data - Factory, Generator, Builder, Fixtures ...
 
@@ -113,12 +113,12 @@ Introducing static factory methods or parameters might make the code challenging
 Given part of your tests. Ultimately, pursuing this path leads to test data factories that are difficult to maintain 
 and confusing to use.
 
-So, how can we **simplify the technical creational logic while simultaneously highlighting its essential aspects**?
+So, how can we <b style="color: #3da6b1;">simplify the technical creational logic while simultaneously highlighting its essential aspects</b>?
 
 ## Emphasize what matters and hide the irrelevant parts 
 
-By combining the Object Mother concept with **pre-filled builders** it becomes possible to hide away all unnecessary 
-complexity while at the same time **emphasizing what matters** for your test-case.
+By combining the Object Mother concept with <b style="color: #3da6b1;">pre-filled builders</b> it becomes possible to hide away all unnecessary 
+complexity while at the same time <b style="color: #3da6b1;">emphasizing what matters</b> for your test-case.
 
 
 Let's put this into practice using the previous example:
@@ -135,16 +135,16 @@ Amount amount = invoice.getVatAmount();
 assertThat(amount).isEqualTo(Amount.EUR(42))
 ```
 
-👉️ It's important to **stress the prefilled nature of a mother.**
+👉️ It's important to <b style="color: #3da6b1;">stress the prefilled nature of a mother.</b>
 Calling `InvoiceMother.invoice().build()` will return a fully fledged `Invoice` were all fields are filled
-in containing **sensible default values**.
+in containing <b style="color: #3da6b1;">sensible default values</b>.
 
 By utilizing the approach mentioned above, the unnecessary clutter is eliminated, allowing the focus to be solely on 
 what is essential for the test. In this particular case, it becomes evident that having two invoice items priced at 
 EUR 100 each, with a 21% tax applied to each item, results in EUR 42 of taxes
 
 We are still using some kind of _static factory method,_ yet it does not immediately return our Invoice rather it returns
-a **builder** that allows you to override those defaults **that matter for your specific test**.
+a <b style="color: #3da6b1;">builder</b> that allows you to override those defaults <b style="color: #3da6b1;">that matter for your specific test</b>.
 
 I like to make the builder part of the Mother class as to reduce the chance to confuse it with production
 code InvoiceBuilders.
@@ -194,9 +194,9 @@ _InvoiceTestDataFactory,_ _InvoiceFixture,_ _InvoiceTestData,_ and so on.
 What is important:
 
 - Let your factory methods return *Builders* not the object under creation.
-- Use a **pre-filled Builder**
-- **Limit** your **static factory methods** to the absolute minimum.
-- Rather **override a field using the Builder** than to introduce a new static factory method.
+- Use a <b style="color: #3da6b1;">pre-filled Builder</b>
+- <b style="color: #3da6b1;">Limit</b> your <b style="color: #3da6b1;">static factory methods</b> to the absolute minimum.
+- Rather <b style="color: #3da6b1;">override a field using the Builder</b> than to introduce a new static factory method.
 
 What can flex:
 
