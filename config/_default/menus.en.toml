@@ -15,15 +15,15 @@ name = "Blog"
 pageRef = "posts"
 weight = 1
 
-[[main]]
-name = "Projects"
-pageRef = "projects"
-weight = 2
-
-[[main]]
-name = "Talks"
-pageRef = "talks"
-weight = 3
+#[[main]]
+#name = "Projects"
+#pageRef = "projects"
+#weight = 2
+#
+#[[main]]
+#name = "Talks"
+#pageRef = "talks"
+#weight = 3
 
 [[main]]
   identifier = "search"
