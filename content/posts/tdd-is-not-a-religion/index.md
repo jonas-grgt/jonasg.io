@@ -15,7 +15,7 @@ cascade:
 On the religious nature of TDD
 <!--more-->
 ---
-Today, I practice a form of Test-Driven Development (TDD) whenever and wherever possible. 
+Today I practice a form of Test-Driven Development (TDD) whenever and wherever possible. 
 However, this wasn't always the case. At the beginning of my career, I was oblivious of it. 
 To be honest, I wasn't even focussed on writing tests; I was already content if the production code worked, 
 and only then I would write a test.
@@ -76,13 +76,13 @@ the software's correctness, guarding against regressions, serving as documentati
 software to evolve at a steady pace.<b style="color: #3da6b1;"> While TDD may provide a structured approach, the ultimate goal is maintainable, reliable and well-tested software.</b>
 ## TDD Evolving with the Changing Software Landscape
 It's essential to acknowledge that the world of software development has undergone a remarkable transformation since TDD was first introduced nearly two decades ago. With the exponential growth of the web came and need for of microservices, the advent of new programming languages, the evolution of architectural patterns, new types of databases, queues and the ever-increasing speed and power of our computers. We are no longer creating the same applications as we did in the past.
-With the advent of microservices I've seen the domain shrink and the integration part of applications grow.
+With the advent of microservices, I've seen the domain shrink and the integration part of applications grow.
 I argue that these shifts have undoubtedly influenced the way we write tests.
 
 I firmly advocate <b style="color: #3da6b1;">attempting to write your tests first</b>, as it's a valuable approach that doesn't necessarily entail the strict adherence to the rules prescribed by traditional TDD.
 
 Exploring the advantages of writing tests first will be our focus in the upcoming sections. 
-However, before looking into that, the next episode will address **The Unit Test Ambiguity**, as it often hinder discussions about TDD.
+However, before looking into that, the next episode will address [The Unit Test Ambiguity](unit-test-ambiguity), as it often hinders discussions about TDD.
 
 [^1]: Diffblue. (2020). "DevOps and Testing Report." Retrieved from [https://www.diffblue.com/DevOps/research_papers/2020-devops-and-testing-report/](https://www.diffblue.com/DevOps/research_papers/2020-devops-and-testing-report/)
 [^2]: TheThreeRulesOfTdd. (2023). http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd
