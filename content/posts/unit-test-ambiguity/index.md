@@ -87,15 +87,16 @@ So then naturally, the question arises, what should be tested explicitly if not 
 Today I no longer let the creation of a method or class drive my tests. 
 Instead, I focus on a fundamental question: **why do I write code?**
 I write code because there is always a requirement for a system to behave in a certain way.
+And that I try to capture in my tests.
 
-This perspective should guide testing most of the time. 
-Tests should stem from the requirements expected to be implemented,
+This perspective should guide testing *most of the time.*
+Tests should stem from the requirements expected to be implemented, how the system should behave and
 not the methods and classes implementing those requirements.
 
 > Explicitly Test Behavior To Implicitly Test The Code Covering That Behavior
 
-<b style="color: #3da6b1;">By explicitly testing the behavior of your application, 
-you implicitly test almost all of your code.</b>
+<b style="color: #3da6b1;">By explicitly testing the expected behavior of your application, 
+you will implicitly test almost all of your code.</b>
 Any portions left untested by this method are likely unrelated to expected behaviors, relate to exceptional cases, 
 such as checked exceptions, or configuration classes. As a consequence, your code coverage should be naturally high.
 
