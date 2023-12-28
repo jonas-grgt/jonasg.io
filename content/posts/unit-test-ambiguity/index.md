@@ -13,7 +13,7 @@ cascade:
   showSummary: true
   invertPagination: true
 ---
-What is the Unit in Unit Testing?
+Why the Unit in Unit Testing does **not**b matter.
 <!--more-->
 ---
 In the first part of this series, I stress the importance of prioritizing a well-designed and overall reliable 
@@ -27,7 +27,8 @@ Likewise, within the industry, there is a lot of ambiguity around what a Unit Te
 We simply cannot agree on a common concept what the unit exactly represents.
 
 In the second part of this testing series, I aim to clarify this ambiguity by defining what actually should be tested 
-or what the unit actually is. This will pave the way for a deeper understanding of testing's true value.
+or what the unit actually is.
+This will pave the way for a deeper understanding of the true value of writing tests.
 ## The Smallest Testable Module
 Unfortunately, the term "Unit Testing" has become synonymous with testing overall. Conversely, a common definition 
 of Unit Testing is the smallest testable component that can be isolated[^1]. For many, this translates to testing a 
@@ -39,7 +40,7 @@ A brittle test suite breaks with even the slightest code alterations unrelated t
 This becomes particularly evident when routine code refactors, such as adding a dependency or a parameter, 
 result in test failures.
 
-If your test code base fractures in response to minor alterations without corresponding changes in requirements, 
+If your test code base fractures in response to minor alterations **without changes in requirements**, 
 it's a clear indication of a poorly designed test suite. Awareness of this issue may be lacking, especially if code 
 coverage numbers present a seemingly positive picture. However, focusing solely on code coverage provides a narrow 
 perspective on the overall health of your test code base.
@@ -51,7 +52,7 @@ Similar to the concept of screaming architecture, tests should vividly scream wh
 The fragility and lack of documentation in tests can be attributed to an excessive emphasis on testing code in isolation. 
 However, it prompts the question: 
 <b style="color: #3da6b1;">what else should be tested if not the code we just wrote or want to write?</b>
-### The pinnacle of brittle tests focused on a technical implementation detail
+### A pinnacle of brittle tests focused on a technical implementation detail
 Admittedly, a very simplistic example, yet I have already encountered tests that look almost exactly like this:
 ```java
 class PersonService {
@@ -75,21 +76,21 @@ verify(personRepository).save(person);
 > － Ian Cooper － TDD where did it all go wrong[^3]
 
 For an extended period, adding a new class or method was exactly what was driving my tests. 
-And it was this idea on testing that made TDD comprehensible.
+Ironically, it was this idea on testing that made TDD comprehensible.
 
 This commitment found additional reinforcement through the abundance of straightforward examples and tutorials 
 available on writing tests and TDD, all consistently emphasizing explicit code testing. 
-The necessity to uphold a specific code coverage percentage further emphasized the importance of thorough testing 
-at the code level, solidifying this foundational principle.
 
 <b style="color: #3da6b1;">I believe that one should not test code explicitly, most of the time.</b>
 So then naturally, the question arises, what should be tested explicitly if not code?
 ## Behavior First
 Today I no longer let the creation of a method or class drive my tests. 
-Instead, I focus on a fundamental question: what guides my tests and why do I write code?
+Instead, I focus on a fundamental question: **why do I write code?**
 I write code because there is always a requirement for a system to behave in a certain way.
 
-This perspective should guide testing most of the time. Tests should stem from the requirements expected to be implemented, not the technical details behind those implementations.
+This perspective should guide testing most of the time. 
+Tests should stem from the requirements expected to be implemented,
+not the methods and classes implementing those requirements.
 
 > Explicitly Test Behavior To Implicitly Test The Code Covering That Behavior
 
