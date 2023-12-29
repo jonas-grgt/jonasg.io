@@ -29,7 +29,7 @@ We simply cannot agree on a common concept what the unit exactly represents.
 In the second part of this testing series, I aim to clarify this ambiguity by defining what actually should be tested 
 or what the unit actually is.
 This will pave the way for a deeper understanding of the true value of writing tests.
-## The Smallest Testable Module
+## Not The Smallest Testable Module
 Unfortunately, the term "Unit Testing" has become synonymous with testing overall. Conversely, a common definition 
 of Unit Testing is the smallest testable component that can be isolated[^1]. For many, this translates to testing a 
 single public method or class, leading to the pitfalls of brittle test suites and misconceptions about testing and 
