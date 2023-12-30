@@ -13,7 +13,7 @@ cascade:
   showSummary: true
   invertPagination: true
 ---
-Why the Unit in Unit Testing does **not**b matter.
+Why the Unit in Unit Testing does **not** matter.
 <!--more-->
 ---
 In the first part of this series, I stress the importance of prioritizing a well-designed and overall reliable 
@@ -76,7 +76,7 @@ verify(personRepository).save(person);
 > － Ian Cooper － TDD where did it all go wrong[^3]
 
 For an extended period, adding a new class or method was exactly what was driving my tests. 
-Ironically, it was this idea on testing that made TDD comprehensible.
+Ironically, it was this idea on testing that made TDD comprehensible for me.
 
 This commitment found additional reinforcement through the abundance of straightforward examples and tutorials 
 available on writing tests and TDD, all consistently emphasizing explicit code testing. 
@@ -100,9 +100,10 @@ you will implicitly test almost all of your code.</b>
 Any portions left untested by this method are likely unrelated to expected behaviors, relate to exceptional cases, 
 such as checked exceptions, or configuration classes. As a consequence, your code coverage should be naturally high.
 
-I stated that behavior should drive your testing most of the time but, when not? This will be the subject of the 
-third part of this Testing Series. 
-
+I emphasized the significance of letting behavior guide your testing in the majority of cases. 
+However, are there instances when this may not be the optimal approach? 
+This question will be answered in the upcoming third installment of my Test First Series,
+where we go back in time to take a look at the classical Testing Pyramid.
 [^1]: Wikipedia (2023) https://en.wikipedia.org/w/index.php?title=Unit_testing&oldid=1186674931
 [^2]: Screaming Architecture (2021) https://blog.cleancoder.com/uncle-bob/2011/09/30/Screaming-Architecture.html
 [^3]: TDD where did it all go wrong (2017) https://youtu.be/EZ05e7EMOLM?si=2M-K1F0O53EYChU0
