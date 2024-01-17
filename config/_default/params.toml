@@ -10,7 +10,7 @@ defaultAppearance = "dark"
 autoSwitchAppearance = true
 
 enableSearch = true
-enableCodeCopy = false
+enableCodeCopy = true
 
 # robots = ""
 fingerprintAlgorithm = "sha256"

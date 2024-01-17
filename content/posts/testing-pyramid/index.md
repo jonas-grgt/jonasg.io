@@ -14,9 +14,17 @@ cascade:
   showSummary: true
   invertPagination: true
 ---
-Why the Unit in Unit Testing does **not**b matter.
+On the Relevance of the Classical Testing Pyramid
 <!--more-->
 ---
 In [the second part](unit-test-ambiguity) I stress the importance of focussing on testing actual requirements, behavior,
 use-cases not implementation details like methods and classes.
-Still as we shall discover soon there are exceptions to this rule
+Through shedding a new light on the classical testing pyrmaid,
+this article will show that there are exceptions to this and at times it is necessary to test implementation details.
+
+## Classical Pyramid
+
+The idea is that your test suite consists out of 
+- a lot of Unit Tests
+- fewer Integration Tests
+- as little as possible End To End tests
