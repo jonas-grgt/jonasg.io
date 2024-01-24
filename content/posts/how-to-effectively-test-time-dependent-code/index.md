@@ -202,7 +202,7 @@ The next section will cover these use-cases.
 The default `java.time.Clock` implementation is immutable in the sense that you can not change it's current date-time or timezone.
 By incorporating a mutable clock that can manipulate time or be set to a specific date-time within our tests, we can avoid the need for multiple Spring contexts.
 ```java
-public class MutableTestClock extends Clock {
+public class MutableClock extends Clock {
 
 	private Instant instant;
 
@@ -220,7 +220,7 @@ public class MutableTestClock extends Clock {
 
 	@Override
 	public Clock withZone(ZoneId zone) {
-		return new MutableTestClock(instant, zone);
+		return new MutableClock(instant, zone);
 	}
 
 	@Override
@@ -241,7 +241,7 @@ public class MutableTestClock extends Clock {
 	}
 
 	public static MutableClock fixed(Instant instant, ZoneId zone) {
-		return new MutableTestClock(instant, zone);
+		return new MutableClock(instant, zone);
 	}
 
 	public static MutableClock fixed(OffsetDateTime offsetDateTime) {
