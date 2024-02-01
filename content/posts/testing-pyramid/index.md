@@ -7,7 +7,7 @@ tags:
   - java
   - testing
   - TDD
-published: true
+published: false
 cascade:
   showDate: true
   showAuthor: true
@@ -16,6 +16,15 @@ cascade:
 ---
 On the Relevance of the Classical Testing Pyramid
 <!--more-->
+---
+
+## TL;DR
+
+The classical testing pyramid focuses on the cost of writing, running,
+and maintaining tests,
+which is a very narrow and single-minded perspective
+not adapted to today's technology landscape.
+
 ---
 
 
