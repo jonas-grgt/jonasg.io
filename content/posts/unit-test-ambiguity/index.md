@@ -16,6 +16,12 @@ cascade:
 On the Misconceptions Surrounding the Unit in Unit Testing
 <!--more-->
 ---
+## TL;DR
+
+The unit you want to test is not a class nor a method but a behavior.
+
+---
+
 In the first part of this series, I stress the importance of prioritizing a well-designed and overall reliable 
 test suite over strict adherence to the TDD mantra.
 However, defining what constitutes a well-designed and reliable test suite raises the question of 
