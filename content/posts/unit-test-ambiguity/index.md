@@ -22,10 +22,13 @@ The unit you want to test is not a class nor a method but a behavior.
 
 ---
 
-In the first part of this series, I stress the importance of prioritizing a well-designed and overall reliable 
+In the [first part](tdd-is-not-a-religion) of this series,
+I stress the importance of prioritizing a well-designed and overall reliable 
 test suite over strict adherence to the TDD mantra.
-However, defining what constitutes a well-designed and reliable test suite raises the question of 
-<b style="color: #3da6b1;">what should be tested, or more precisely, what the unit under test is.</b>
+However,
+defining what constitutes a well-designed and reliable test suite raises the question of 
+<b style="color: #3da6b1;">what should be tested,
+or more precisely, what the unit under test is.</b>
 
 If you were to ask a group of developers to give a definition of a Unit Test, you'd likely receive a plethora 
 of different responses. 
