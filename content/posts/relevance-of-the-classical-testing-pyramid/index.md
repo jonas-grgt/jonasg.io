@@ -14,7 +14,7 @@ cascade:
   showSummary: true
   invertPagination: true
 ---
-Looking at an Ancient Structure Of The Past
+Looking at an Ancient Structure
 <!--more-->
 ---
 
