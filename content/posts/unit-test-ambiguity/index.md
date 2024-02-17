@@ -42,7 +42,7 @@ This will pave the way for a deeper understanding of the true value of writing t
 Unfortunately, the term "Unit Testing" has become synonymous with testing overall. Conversely, a common definition 
 of Unit Testing is the smallest testable component that can be isolated[^1]. For many, this translates to testing a 
 single public method or class, leading to the pitfalls of brittle test suites and misconceptions about testing and 
-difficulties with TDD or how I like to call it Test First.
+difficulties with TDD. 
 ## Unit Tests: A Source of Brittleness
 Test code bases composed of numerous small tests focused on methods and classes often suffer from brittleness. 
 A brittle test suite breaks with even the slightest code alterations unrelated to changing requirements. 
