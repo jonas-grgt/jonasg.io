@@ -20,7 +20,7 @@ sharingLinks: false
 
 Java based XML serializing and deserializing (serdes) library.
 
-🏡 homepage: https://github.com/jonasgeiregat/xjx
+🏡 homepage: https://github.com/jonas-grgt/xjx
 
 ### Example deserialization usage:
 
