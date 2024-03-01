@@ -212,7 +212,7 @@ matter for your test.
 
 ```java
 InvoiceMother.invoice()
-    .withShippingAddress(AddressMother.addres()
+    .withShippingAddress(AddressMother.address()
         .withCountry(Country.US)
         .build())
     .build();

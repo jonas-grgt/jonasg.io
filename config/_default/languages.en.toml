@@ -15,7 +15,7 @@ title = "jonasg.io "
    image = "img/author.png"
    headline = "Software Developer"
    links = [
-     { github = "https://github.com/jonasgeiregat" },
+     { github = "https://github.com/jonas-grgt" },
      { linkedin = "https://www.linkedin.com/in/jonas-geiregat-a8421a31" },
      { twitter = "https://twitter.com/jonas_grgt" },
    ]
