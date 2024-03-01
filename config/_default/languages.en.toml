@@ -13,7 +13,7 @@ title = "jonasg.io "
 [author]
    name = "Jonas Geiregat"
    image = "img/author.png"
-   headline = "System Designing Software Developer"
+   headline = "Software Developer"
    links = [
      { github = "https://github.com/jonas-grgt" },
      { linkedin = "https://www.linkedin.com/in/jonas-geiregat-a8421a31" },
