@@ -31,13 +31,15 @@ or looking down on those who haven't adopted it;
 - Introduction of new features
 - Modifications to existing features
 
-Additionally TDD also plays a crucial role in the design of our applications.
-Once we have **a working feature**, regardless of its initial quality or elegance,
+TDD achieves this by playing a crucial role in the design of our applications.
+Once we have developed **a working feature**,
+regardless of its initial code quality or elegance,
 having robust tests in place enables us to modify the internal workings with confidence.
+This is what the whole red-green-refactor cycle is about.
 
-This ensures
-that changes made to improve
-or optimize the code (after our initial green tests or even months later when refactoring)
+Such an approach ensures that changes made to improve
+or optimize the code
+(after our initial green tests or even months later when refactoring or altering the feature's behavior)
 do not inadvertently introduce errors or regressions.
 
 Do not confuse a working feature by working code.<b style="color: #3da6b1;"> 
