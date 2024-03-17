@@ -1,6 +1,6 @@
 ---
 title: "<span style=\"color: #606a79; font-size: 90%;\">Test First － Part 5</span><br/> TL;DR"
-head_title: "TL;DR" 
+head_title: "Test First - TL;DR" 
 description: "Too long; didn't read of the Test First series." 
 date: 2024-03-17
 tags:
