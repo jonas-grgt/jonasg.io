@@ -91,7 +91,7 @@ var order = OrderMother.newOrder();
 
 // when
 var clock = Clock.fixed(Instant.parse("1985-02-25T23:00:00.00Z"), 
-        ZoneId.of("Europe/Brussels");
+        ZoneId.of("Europe/Brussels"));
 order.markAsProcessed(clock);
 
 // then
@@ -118,7 +118,7 @@ assertThat(order.processDateTime())
 This test is prone to flakiness and will probably fail consistently due to the time that elapses between the `markAsProcessed` method's `LocalDateTime.now()` call and the actual assertion. To mitigate this, you can truncate the generated date-time to seconds or milliseconds and perform the same truncation in the assertion. While this approach reduces flakiness, it doesn't guarantee 100% accuracy. But in most cases that trade-off is acceptable.
 Here's an example of truncating to seconds in your production code:
 ```java
-Instant.now().truncatedTo(ChronoUnit.SECONDS)
+Instant.now().truncatedTo(ChronoUnit.SECONDS);
 ```
 And this can be tested like so:
 ```java
@@ -140,9 +140,9 @@ var localDateTime = LocalDateTime.now(Clock.systemUTC());
 assertThat(localDateTime)
 	.isCloseToUtcNow(within(1, ChronoUnit.SECONDS));
 
-var instant = Instant.parse("2000-01-01T00:00:00.00Z")
+var instant = Instant.parse("2000-01-01T00:00:00.00Z");
 assertThat(instant)
-	.isCloseTo("1999-12-31T23:59:59.99Z", within(10, ChronoUnit.MILLIS))
+	.isCloseTo("1999-12-31T23:59:59.99Z", within(10, ChronoUnit.MILLIS));
 ```
 # Clock as a spring bean
 Going forward with the clock. Whenever we require access to the current date-time, it is necessary to have access to the clock. However, passing the clock object throughout our code can become cumbersome. 
@@ -187,7 +187,7 @@ public class TestClockConfiguration {
 	@Primary
 	Clock fixedClock() {
 		return Clock.fixed(Instant.parse("1985-02-25T23:00:00.00Z"), 
-                ZoneId.of("Europe/Brussels");
+                ZoneId.of("Europe/Brussels"));
 	}
 
 }
@@ -287,7 +287,7 @@ public class OrderProcessor {
 	}
 
 	public boolean isWithinWorkingHours() {
-	        LocalTime now = LocalTime.now(clock)
+	        LocalTime now = LocalTime.now(clock);
 	        return !now.isBefore(startOfWorkingDay) 
                    && !time.isAfter(endOfWorkingDay);
 	}
@@ -305,12 +305,12 @@ public class OrderProcessingFeatureTest {
     @Test
 	void shouldProcessOrderWithinWorkingHours() {
 		// given
-		mutableClock.set(Instant.parse("2023-02-25T13:00:00.00Z"))
+		mutableClock.set(Instant.parse("2023-02-25T13:00:00.00Z"));
 
 		// when
         var resultActions = mockMvc.perform(post("/orders/ORD567890")
             .contentType(MediaType.APPLICATION_JSON)
-            .content(toJson(OrderMother.defaultOrder()));
+            .content(toJson(OrderMother.defaultOrder())));
 
 		// then
         resultActions.andExpect(status().isOk())
@@ -320,12 +320,12 @@ public class OrderProcessingFeatureTest {
     @Test
 	void shouldProcessOrderLaterWhenReceivedOutsideOfWorkingHours() {
 		// given
-		mutableClock.set(Instant.parse("2023-02-25T23:00:00.00Z"))
+		mutableClock.set(Instant.parse("2023-02-25T23:00:00.00Z"));
 
 		// when
         var resultActions = mockMvc.perform(post("/orders/ORD4785669")
             .contentType(MediaType.APPLICATION_JSON)
-            .content(toJson(OrderMother.defaultOrder()));
+            .content(toJson(OrderMother.defaultOrder())));
 
 		// then
         resultActions.andExpect(status().isOk())
