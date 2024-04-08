@@ -16,8 +16,26 @@ sharingLinks: false
 :books: Some noteworthy projects I've created along the way.
 {{< /lead >}}
 
-## Xjx
+## Bob
+Builder generator for Java
 
+🏡 homepage: https://github.com/jonas-grgt/bob
+
+### Usage
+```java
+@Buildable
+class Car {
+	private final String color;
+	
+	private final Make make;
+	
+    public Car(String color, Make make) {
+		this.color = color;
+        this.make = make;
+    }
+}
+```
+## Xjx
 Java based XML serializing and deserializing (serdes) library.
 
 🏡 homepage: https://github.com/jonas-grgt/xjx
