@@ -1,9 +1,9 @@
 ---
-title: "<span style=\"color: #606a79; font-size: 90%;\">Swift Strokes</span><br/>Moving along the command line"
+title: "Kafka Testing Strategies with Spring" 
 head_title: "Kafka Testing Strategies with Spring"
 description: "Kafka Testing Strategies with Spring" 
 date: 2025-05-14
-published: false
+draft: true
 tags:
   - kafka
   - spring
@@ -17,3 +17,11 @@ cascade:
 Tips and tricks to move swiftly on the command line.
 <!--more-->
 ---
+
+## kafka-native to the rescue
+
+Even with kafka-native images we still have to pay the price to startup the spring-context.
+
+## 
+
+Altho

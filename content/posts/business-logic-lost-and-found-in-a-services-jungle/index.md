@@ -3,7 +3,7 @@ title: "Business Logic: Lost and Found in a Services Jungle"
 head_title: "Business Logic: Lost and Found in a Services Jungle"
 description: "How to make your code speak the language of business"
 date: 2024-08-20
-published: false
+draft: true
 tags:
   - java
   - architecture

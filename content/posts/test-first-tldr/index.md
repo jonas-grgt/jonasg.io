@@ -7,7 +7,6 @@ tags:
   - java
   - testing
   - TDD
-published: true
 cascade:
   showDate: true
   showAuthor: true

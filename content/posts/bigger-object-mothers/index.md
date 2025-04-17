@@ -3,7 +3,7 @@ title: "Bigger Mothers - Simplify Your Big (JSON) Data Test Setups"
 head_title: Bigger Mothers - Simplify Your Big (JSON) Data Test Setups
 description: "Bigger Mothers - Simplify Your Big (JSON) Data Test Setups" 
 date: 2024-03-20
-published: false
+draft: true
 tags:
   - java
   - testing
