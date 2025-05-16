@@ -33,17 +33,18 @@ that executes and or orchestrates the business logic over a single aggregate.
 ## What is wrong with services?
 
 Service classes have the tendency to become a dumping ground for business logic molding it
-into a big ball of CRUD.
+into a big ball of CRUD. 
 At times, it is very deceiving to mold business logic into CRUD operations because, in the
 end; looking at it from a technical point, a lot of business logic simply boils down to
-doing a database operation.
+doing a CRUDy database operation.
 
 In example:
 
 - Registering a user on a technical level, essentially boils down to creating a record in the
-database.
+database. 
 - Placing an order is just a matter of creating a record in the database.
 - Changing the delivery address is just a matter of updating a record in the database.
+
 
 But are they really?
 
