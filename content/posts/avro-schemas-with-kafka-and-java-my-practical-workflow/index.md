@@ -6,6 +6,7 @@ date: 2025-05-16
 tags:
   - java
   - avro
+  - kafka
 cascade:
   showDate: true
   showAuthor: true
