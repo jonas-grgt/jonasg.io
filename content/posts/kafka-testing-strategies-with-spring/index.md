@@ -146,8 +146,6 @@ It does require a `KafkaConsumer` to be passed in. Luckily, we can leverage the
 `ConsumerFactory` that is already autoconfigured by spring-boot.
 
 ```java
-import java.time.Duration;
-
 @Autowired
 ConsumerFactory<String, Object> consumerFactory;
 
