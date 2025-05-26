@@ -27,12 +27,14 @@ applications.
 
 I will cover verifying that messages are published to Kafka, consuming them in tests.
 
-A fully working example project accompanying this post can be found at: 
+A fully working example project accompanying this post can be found at:
 
-{{< icon github >}}&nbsp;[https://github.com/jonas-grgt/spring-kafka-testing-demo](https://github.com/jonas-grgt/spring-kafka-testing-demo)
+{{<icon github>}}&nbsp;[https://github.com/jonas-grgt/spring-kafka-testing-demo](https://github.com/jonas-grgt/spring-kafka-testing-demo)
 
 ## The system under test
+
 In this example, I will test a simple application that publishes a `FraudSuspected` event.
+
 ```shell
 @PostMapping("/creditcard/transactions")
 void process(@RequestBody CreditCardTransaction transaction) {
@@ -146,6 +148,7 @@ It does require a `KafkaConsumer` to be passed in. Luckily, we can leverage the
 `ConsumerFactory` that is already autoconfigured by spring-boot.
 
 ```java
+
 @Autowired
 ConsumerFactory<String, Object> consumerFactory;
 
@@ -194,9 +197,37 @@ This can be useful when you want to run tests in parallel or when your tests err
 reaching the `@AfterEach` method. Even with a random group ID, I would still opt to always
 try to close the group.
 
-### Async timing issues
+## Async timing issues
 
 Tests like these can be flaky if you're not careful.
+
+### Async in nature
+
+The actual send to Kafka happens **asynchronously**, and may be batched depending on the
+producer configuration.
+The `ListenableFuture` returned by `KafkaTemplate` also reveals this async behavior.
+
+If you want to force messages to be sent immediately, in a blocking manner, you can call:
+
+```java
+kafkaTemplate.flush();
+```
+
+In any case, it’s usually better to embrace the asynchronous nature and use **Awaitility** to
+handle timing gracefully:
+
+```java
+Awaitility.await()
+        .atMost(Duration.ofSeconds(5))
+        .untilAsserted(() -> {
+            ConsumerRecords<String, Object> records = KafkaTestUtils
+                    .getRecords(this.consumer, Duration.ofMillis(500));
+        });
+```
+Note that the `Duration` passed to `getRecords` is shorter than the Awaitility timeout.
+This way, if the records aren't available yet, Awaitility will simply retry on the next poll.
+
+### Consumer Group Registration
 
 Kafka initial registration of a consumer group is when `Consumer.poll()` is first called —
 in our case from the `KafkaTestUtils.getRecords()` method.
@@ -233,7 +264,7 @@ blindly assert the exact number of messages received,
 but rather rely on specific ids or shape of the data to ensure you are asserting the
 records from your test.
 
-#### Reusable TestContainers
+### Reusable TestContainers
 
 An added benefit of this approach is that I can reuse the container across test runs.
 
@@ -247,7 +278,9 @@ testcontainers.reuse.enable=true
 ```
 
 ## Final Test Example
+
 ```java
+
 @SpringBootTest
 @AutoConfigureMockMvc
 class FraudDetectionTests implements KafkaContainerSupport {
@@ -305,7 +338,8 @@ class FraudDetectionTests implements KafkaContainerSupport {
                                         .get()
                                         .usingComparator(BigDecimal::compareTo)
                                         .isEqualTo(new BigDecimal("10000.001"));
-                                assertThat(c.getSuspicionReason()).isEqualTo(UNUSUAL_AMOUNT);
+                                assertThat(c.getSuspicionReason()).isEqualTo(
+                                        UNUSUAL_AMOUNT);
                             });
                 });
 
