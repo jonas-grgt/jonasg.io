@@ -325,24 +325,27 @@ class FraudDetectionTests implements KafkaContainerSupport {
         // then
         this.consumer = consumerFactory.createConsumer("test-group", "-test-client");
         this.consumer.subscribe(List.of(fraudAlertTopic));
-        ConsumerRecords<String, Object> records = KafkaTestUtils
-                .getRecords(this.consumer, Duration.ofSeconds(5));
 
-        assertThat(records)
-                .satisfiesOnlyOnce(record -> {
-                    assertThat(record.key()).isEqualTo(fraudId);
-                    assertThat(record.value())
-                            .isInstanceOfSatisfying(FraudSuspected.class, c -> {
-                                assertThat(c.getFraudId()).isEqualTo(fraudId);
-                                assertThat(c.getAmount()).isPresent()
-                                        .get()
-                                        .usingComparator(BigDecimal::compareTo)
-                                        .isEqualTo(new BigDecimal("10000.001"));
-                                assertThat(c.getSuspicionReason()).isEqualTo(
-                                        UNUSUAL_AMOUNT);
+        Awaitility.await()
+                .atMost(Duration.ofSeconds(5))
+                .untilAsserted(() -> {
+                    ConsumerRecords<String, Object> records = KafkaTestUtils
+                            .getRecords(this.consumer, Duration.ZERO);
+
+                    assertThat(records)
+                            .satisfiesOnlyOnce(record -> {
+                                assertThat(record.key()).isEqualTo(fraudId);
+                                assertThat(record.value())
+                                        .isInstanceOfSatisfying(FraudSuspected.class, c -> {
+                                            assertThat(c.getFraudId()).isEqualTo(fraudId);
+                                            assertThat(c.getAmount()).isPresent()
+                                                    .get()
+                                                    .usingComparator(BigDecimal::compareTo)
+                                                    .isEqualTo(new BigDecimal("10000.001"));
+                                            assertThat(c.getSuspicionReason()).isEqualTo(UNUSUAL_AMOUNT);
+                                        });
                             });
                 });
-
     }
 }
 ```
