@@ -221,7 +221,7 @@ Awaitility.await()
         .atMost(Duration.ofSeconds(5))
         .untilAsserted(() -> {
             ConsumerRecords<String, Object> records = KafkaTestUtils
-                    .getRecords(this.consumer, Duration.ofMillis(500));
+                    .getRecords(this.consumer, Duration.ofMillis(200));
         });
 ```
 Note that the `Duration` passed to `getRecords` is shorter than the Awaitility timeout.
@@ -330,7 +330,7 @@ class FraudDetectionTests implements KafkaContainerSupport {
                 .atMost(Duration.ofSeconds(5))
                 .untilAsserted(() -> {
                     ConsumerRecords<String, Object> records = KafkaTestUtils
-                            .getRecords(this.consumer, Duration.ZERO);
+                            .getRecords(this.consumer, Duration.of(200));
 
                     assertThat(records)
                             .satisfiesOnlyOnce(record -> {
