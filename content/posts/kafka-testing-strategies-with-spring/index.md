@@ -93,9 +93,12 @@ In my case for all integration tests I prefer to have **one context to rule them
 
 ## Sharing Testcontainers and Spring Contexts
 
-By default, if you annotate multiple test classes with @Testcontainers or inherit from a
-base test class using it, each test class gets its own Kafka container and own Spring
-context. This is both redundant and slow.
+If you let your containers lifecycle be managed by **Testcontainers**, using the standard
+`@Testcontainers` and `@Container` annotations, you will end up with a new Kafka container
+for each test class.
+
+This forces you to create a new Spring context for each test class as well since the
+`ConnectionDetails` will differ between tests.
 
 To keep my test suite fast and lean, I optimize for:
 
@@ -104,36 +107,39 @@ To keep my test suite fast and lean, I optimize for:
 
 Let me show you how I set that up.
 
-### Singleton containers for the win
+### Singleton containers managed by spring for the win
 
-I manage the Testcontainers lifecycle manually and start the Kafka container only once for
-all tests,
-at least those that implement the `KafkaContainerSupport` interface.
-
-Some create a base class for this, but I prefer to use an interface with a static
-`@BeforeAll` method to keep it clean and simple — as base classes can lead to a hodgepodge
-of all kind of test related methods and properties.
+When you expose a `Container` as a Spring Bean, it will be started and stopped
+automatically by Spring and be active for the lifetime of the application context—
+as long as all the tests share the same Spring context.
 
 ```java
-public interface KafkaContainerSupport {
 
+@TestConfiguration(proxyBeanMethods = false)
+class TestcontainersConfiguration {
+
+    @Bean
     @ServiceConnection
-    KafkaContainer kafkaContainer = new KafkaContainer("apache/kafka-native:3.8.0")
-            .withReuse(true)
-            .withExposedPorts(9092, 9093);
-
-    @BeforeAll
-    static void beforeAll() {
-        if (!kafkaContainer.isRunning()) {
-            kafkaContainer.start();
-        }
+    KafkaContainer kafkaContainer() {
+        return new KafkaContainer("apache/kafka-native:3.8.0")
+                .withReuse(true)
+                .withExposedPorts(9092, 9093);
     }
+
+}
+
+@SpringBootTest
+@Import(TestcontainersConfiguration.class)
+class MyKafkaTest {
+    // ...
 }
 ```
 
 Notice the `@ServiceConnection` annotation, it binds the kafka connection details to
 spring-boot's configuration properties. In other words it will automatically set the
 `spring.kafka.bootstrap-servers` etc...
+
+
 
 ## Verify records are published
 
@@ -283,7 +289,8 @@ testcontainers.reuse.enable=true
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class FraudDetectionTests implements KafkaContainerSupport {
+@Import(TestcontainersConfiguration.class)
+class FraudDetectionTests {
 
     @Autowired
     ConsumerFactory<String, Object> consumerFactory;
