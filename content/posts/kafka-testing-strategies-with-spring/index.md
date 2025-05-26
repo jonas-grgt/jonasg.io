@@ -231,8 +231,8 @@ This way, if the records aren't available yet, Awaitility will simply retry on t
 
 Kafka initial registration of a consumer group is when `Consumer.poll()` is first called —
 in our case from the `KafkaTestUtils.getRecords()` method.
-If a message is published before that call, and `auto.offset.reset` is set to `latest` (
-the default), the consumer will miss the record entirely.
+If a message is published before that call, and `auto.offset.reset` is set to `latest` 
+(the default), the consumer will miss the record entirely.
 
 This means that your first test will fail and subsequent tests might succeed depending on
 how they assert things.
