@@ -20,9 +20,9 @@ How to name and manage topics.
 ---
 
 The success of Event-Driven Architecture (EDA) isn’t just about getting the technology
-right—it’s also about **how teams work together**, both within their own boundaries and
+right, it’s also about **how teams work together**, both within their own boundaries and
 across
-organizational lines. It’s about shared models—built through meaningful naming, defined
+organizational lines. It’s about shared models built through meaningful naming, defined
 ownership, and a mutual understanding of what each topic represents.
 
 EDA introduces powerful decoupling between systems, but that decoupling also demands
@@ -39,7 +39,7 @@ ownership.
 > naming things
 
 As your system grows to dozens or even hundreds of topics, a clear and consistent naming
-convention becomes more than just a best practice—it becomes the foundation for a shared
+convention becomes more than just a best practice, it becomes the foundation for a shared
 understanding.
 
 A well-defined <b style="color: #3da6b1;">Topic Naming
@@ -89,7 +89,7 @@ prod), it's still a good idea to include an explicit environment prefix in your 
 names. 
 
 This small redundancy helps eliminate ambiguity and protects against costly
-mistakes—like accidentally producing or worse, deleting topics from the wrong environment. 
+mistakes like, accidentally producing or worse, deleting topics from the wrong environment. 
 
 
 ### Managing Topics
@@ -98,7 +98,7 @@ Now we know how to name things it is time to discuss how to actually create thos
 
 ### The Question of Ownership
 
-Who actually owns—or, put differently, takes responsibility for—the full lifecycle of a
+Who actually owns, or, put differently, takes responsibility for the full lifecycle of a
 topic? In many organizations, this responsibility falls on a DevOps or infrastructure
 team. Often this stems from the fact that they are the ones who in the end are responsible
 for the cluster.
@@ -166,7 +166,7 @@ Each approach has its trade-offs, and the right choice depends on your organizat
 size, structure, and priorities.
 
 ---
-A successful Event-Driven Architecture isn’t just about choosing the right tools—it's
+A successful Event-Driven Architecture isn’t just about choosing the right tools, it's
 about aligning technical practices with team ownership and organizational structure.
 Whether centralized or distributed, what matters most is making the trade-offs explicit
 and intentional.
