@@ -192,5 +192,5 @@ Maybe your application is more write heavy than read and another is not so you'l
 And maybe you want different limits per environment, or maybe you want a shared **configurable** class for all your
 applications?
 
-In the next part, I’ll show you how to move these magic numbers into your `application.yaml` and create a reusable,
+In the [next part](https://jonasg.io/posts/externalize-rocksdb-configuration-in-spring-boot/), I’ll show you how to move these magic numbers into your `application.yaml` and create a reusable,
 **spring-aware** `RocksDBConfigSetter` that works across all your stream processing application.
