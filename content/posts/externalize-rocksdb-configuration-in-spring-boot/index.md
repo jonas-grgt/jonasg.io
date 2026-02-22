@@ -252,7 +252,7 @@ public class RocksDbProperties {
 
 Now you can define your RocksDB properties in your `application.yml` file:
 ```yaml
-kafak.streams.rocksdb.total-write-buffer-size: 500MiB
+kafka.streams.rocksdb.total-write-buffer-size: 500MiB
 
 ```
 I like to define sizes using human-readable units such as `MiB` and `KiB`, rather than raw byte values, 
