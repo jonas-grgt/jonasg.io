@@ -1,9 +1,8 @@
 ---
-title: "Bigger Mothers - Simplify Your Big (JSON) Data Test Setups"
-head_title: Bigger Mothers - Simplify Your Big (JSON) Data Test Setups
-description: "Bigger Mothers - Simplify Your Big (JSON) Data Test Setups" 
-date: 2026-02-20
-draft: true
+title: "Bigger Mothers - Simplify Your Big (JSON,CSV) Data Test Setups"
+head_title: Bigger Mothers - Simplify Your Big (JSON,CSV) Data Test Setups
+description: "Bigger Mothers - Simplify Your Big (JSON,CSV) Data Test Setups" 
+date: 2026-02-28
 tags:
   - java
   - testing
@@ -21,11 +20,11 @@ When working with large JSON structures in tests, the signal-to-noise ratio quic
 
 Tests either rely on opaque JSON files or embed massive JSON blobs inline, making it difficult to see what actually matters.
 
-This post shows how to apply the [Object Mother](https://jonasg.io/posts/object-mother/) pattern to JSON test data, allowing tests to <b style="color: #3da6b1;">emphasize relevant parts (fields) while hiding irrelevant structure</b>.
+This post shows how to apply the [Object Mother](https://jonasg.io/posts/object-mother/) pattern to JSON test data, allowing tests to <b style="color: #3da6b1;">emphasize relevant parts (fields) while hiding irrelevant ones</b>.
 
 ## The Object Mother recap
 
-The Object Mother pattern provides a central place to construct test objects with sensible defaults, while allowing tests to override only the fields relevant to their scenario.
+The Object Mother pattern provides a central place to construct test objects with sensible defaults, while allowing tests to override only the relevant fields.
 
 ## JSON test data
 
@@ -78,8 +77,6 @@ void testWithMessyJson() {
 }
 ```
 
-
-
 The above constructions negates everything Object Mother brings to the table, even if you abstract the file loading code  away in some kind of reusable component.
 
 ## Data Mothers
@@ -87,47 +84,16 @@ The above constructions negates everything Object Mother brings to the table, ev
 What if we could use [Object Mothers just like we did for Java Objects](https://jonasg.io/posts/object-mother/) so that the above test would look like this:
 
 ```java
-String budgetReport = BudgetReportMother.defaultBudget()
-	.withProperty("id", "23b48cb7-58f5-4a6c-a551-8b13b286a360")
-	.withStatus("status", "ON_GOING")
-  // this will completely remove the property from the resulting JSON string
-	.withRemovedProperty("mainInvoiceNumber") 
-	.build();
+String json = JsonMother.of("book.json")
+        .withProperty("title", "New Title")
+        .withProperty("tags[0]", "fiction")
+        // this will completely remove the property from the resulting JSON string
+        .withRemovedProperty("author")
+        .build();
 ```
 
 This makes it immediately obvious which fields matter for the test. Everything else fades into the background, reducing cognitive load and improving readability.
 
-How it's done:
-
-```java
-public class BudgetReportMother {
-	public static Builder defaultBudget() {
-		return new Builder("mother-data/budget-report.json");
-	}
-
-  /// Pre-configured scenario for common test cases
-  public static Builder ongoingBudget() {
-      return budget()
-	        .withStatus("status", "ON_GOING")
-          .withId("default-id");
-  }
-
-	public static class Builder extends AbstractJsonObjectMotherBuilder<Builder> {
-
-		public Builder(String filePath) {
-			super(filePath);
-		}
-
-		public Builder withStatus(String status) {
-			this.withProperty("status", status);
-			return this;
-		}
-	}
-}
-```
-
-The clue lies in the usage of `AbstractJsonObjectMotherBuilder` which is responsible for loading
-and manipulating the JSON data file. 
-It is part of the **data-object-mother** utility library I made available at: https://
+`JsonMother` is part of the **data-object-mother** utility library, that also supports XML and CSV, available at: https://github.com/jonas-grgt/data-object-mother
 
 
