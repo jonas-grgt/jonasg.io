@@ -85,10 +85,11 @@ What if we could use [Object Mothers just like we did for Java Objects](https://
 
 ```java
 String json = JsonMother.of("book.json")
-        .withProperty("title", "New Title")
-        .withProperty("tags[0]", "fiction")
+        // Json Pointer is used to select a property
+        .withProperty("/title", "New Title")
+        .withProperty("/tags/0", "fiction")
         // this will completely remove the property from the resulting JSON string
-        .withRemovedProperty("author")
+        .withRemovedProperty("/author")
         .build();
 ```
 
