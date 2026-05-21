@@ -1,5 +1,5 @@
-languageCode = "en"
-languageName = "English"
+local = "en"
+label = "English"
 weight = 1
 
 title = "jonasg.io "
@@ -18,5 +18,5 @@ title = "jonasg.io "
    links = [
      { github = "https://github.com/jonas-grgt" },
      { linkedin = "https://www.linkedin.com/in/jonasgeiregat" },
-     { twitter = "https://twitter.com/jonas_grgt" },
+     { bky = "https://bsky.app/profile/jonasgrgt.bsky.social" },
    ]
