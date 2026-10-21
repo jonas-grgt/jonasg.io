@@ -16,8 +16,9 @@ The case against black box engineering
 <!--more-->
 ---
 
-After watching [DHH's Rails World 2026 keynote](https://www.youtube.com/watch?v=vDjW_dRyKXY), I felt **unsettled**,
-**scared** for my future as a software engineer, and honestly **angry**.
+After watching [DHH's Rails World 2026 keynote](https://www.youtube.com/watch?v=vDjW_dRyKXY), I was amazed by the ideas
+he presented and all the possibilities that come with them. Yet at the same time I felt **unsettled**, **scared** for my
+future as a software engineer, and honestly **angry**.
 
 Since then, I've been thinking about it constantly, and about what it means for me. This is a write-up of my current
 thoughts as of October 2026. I'm sure my opinion will change as I learn more.
