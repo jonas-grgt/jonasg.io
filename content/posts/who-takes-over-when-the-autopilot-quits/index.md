@@ -60,9 +60,10 @@ Engineers who stop using their engineering muscle will end up in the same situat
 
 ## You still have a choice
 
-I use AI, and it makes me better. I'm not against it.
+DHH is right that this is an amazing time with amazing tools. But I do believe he's exaggerating a lot, or he sees
+or can do things I don't yet understand.
 
-But there is a choice here. You can get lazy and slowly become a dark factory engineer who prompts, glances at the
+There is a choice here. You can get lazy and slowly become a dark factory engineer who prompts, glances at the
 output, and ships. Or you can choose not to, at least for now.
 
 We need to understand more than a piece of code, and more than a single codebase. Joel Spolsky made this point years ago
