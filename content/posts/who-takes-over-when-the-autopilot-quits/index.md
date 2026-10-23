@@ -53,8 +53,11 @@ practices it anymore, so every engineer becomes that manager.
 Aviation has seen this before. Pilots fly on autopilot for roughly 90 to 95% of flight time, which is why the FAA urges
 them to hand-fly regularly. When the autopilot disengaged on
 [Air France 447 in 2009](https://en.wikipedia.org/wiki/Air_France_Flight_447), the pilots misread a stall and crashed,
-killing all 228 people on board. Investigators found no convincing evidence that their manual flying skills had been
-properly maintained.
+killing all 228 people on board.
+
+Whether their manual flying skills had atrophied has not been conclusively established. But when the autopilot
+disengaged, the pilots struggled to take control. What happens when you rely on automation for so long that you can no
+longer confidently take over?
 
 Engineers who stop using their engineering muscle will end up in the same situation.
 
